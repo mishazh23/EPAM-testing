@@ -18,7 +18,12 @@ public class ExperimentalPlane extends Plane{
     public ClassificationLevel getClassificationLevel(){
         return classificationLevel;
     }
-
+    public ExperimentalType getType() {
+        return type;
+    }
+    public void setType(ExperimentalType type) {
+        this.type = type;
+    }
     @Override
     public String toString() {
         return super.toString().replace("}",
@@ -46,6 +51,7 @@ public class ExperimentalPlane extends Plane{
     public int hashCode() {
         return Objects.hash(super.hashCode(), type, classificationLevel);
     }
+
 
 
 }

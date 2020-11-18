@@ -19,7 +19,9 @@ public class Airport {
     public List<? extends Plane> getPlanes() {
         return planes;
     }
-
+    public void setPlanes(List<? extends Plane> planes) {
+        this.planes = planes;
+    }
     public List<PassengerPlane> getPassengerPlaneList() {
         return this.planes.stream()
                 .filter(plane -> plane instanceof PassengerPlane)
@@ -85,4 +87,6 @@ public class Airport {
                 "Planes=" + planes.toString() +
                 '}';
     }
+
+
 }

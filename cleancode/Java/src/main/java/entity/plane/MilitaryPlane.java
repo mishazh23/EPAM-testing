@@ -15,6 +15,9 @@ public class MilitaryPlane extends Plane{
     public MilitaryType getType() {
         return type;
     }
+    public void setType(MilitaryType type) {
+        this.type = type;
+    }
 
     @Override
     public String toString() {
@@ -42,4 +45,6 @@ public class MilitaryPlane extends Plane{
     public int hashCode() {
         return Objects.hash(super.hashCode(), type);
     }
+
+
 }

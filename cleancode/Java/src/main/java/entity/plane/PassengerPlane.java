@@ -13,7 +13,9 @@ public class PassengerPlane extends Plane{
     public int getPassengersCapacity() {
         return passengersCapacity;
     }
-
+    public void setPassengersCapacity(int passengersCapacity) {
+        this.passengersCapacity = passengersCapacity;
+    }
     @Override
     public String toString() {
         return super.toString().replace("}",
@@ -40,4 +42,6 @@ public class PassengerPlane extends Plane{
     public int hashCode() {
         return Objects.hash(super.hashCode(), passengersCapacity);
     }
+
+
 }
