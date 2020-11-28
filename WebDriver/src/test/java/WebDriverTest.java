@@ -18,12 +18,13 @@ public class WebDriverTest {
     @BeforeMethod(alwaysRun = true)
     public void browserSetup() {
 	System.setProperty("webdriver.chrome.driver", "D://webdriver/chromedriver.exe");
-        ChromeOptions chromeOptions = new ChromeOptions();
+        /*ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.addArguments("--headless");
         chromeOptions.addArguments("disable-gpu");
         chromeOptions.addArguments("window-size=1920,1080");
 
-        driver = new ChromeDriver(chromeOptions);
+        driver = new ChromeDriver(chromeOptions);*/
+        driver = new ChromeDriver();
     }
 
     @Test
