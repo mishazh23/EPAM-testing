@@ -17,7 +17,7 @@ public class WebDriverTest {
 
     @BeforeMethod(alwaysRun = true)
     public void browserSetup() {
-	System.setProperty("webdriver.chrome.driver", "D:\webdriver\chromedriver.exe");
+	System.setProperty("webdriver.chrome.driver", "D://webdriver/chromedriver.exe");
         driver = new ChromeDriver();
     }
 
@@ -37,7 +37,7 @@ public class WebDriverTest {
         loginSubmitButton.click();
         driver.switchTo().window(new ArrayList<>(driver.getWindowHandles()).get(0));
         String log = driver.findElement(By.className("ok-auth__info")).getText();
-        Assert.assertEquals(login, log);
+        Assert.assertEquals(log, login);
     }
 
     @AfterClass
