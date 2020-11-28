@@ -18,7 +18,12 @@ public class WebDriverTest {
     @BeforeMethod(alwaysRun = true)
     public void browserSetup() {
 	System.setProperty("webdriver.chrome.driver", "D://webdriver/chromedriver.exe");
-        driver = new ChromeDriver();
+        ChromeOptions chromeOptions = new ChromeOptions();
+        chromeOptions.addArguments("--headless");
+        chromeOptions.addArguments("disable-gpu");
+        chromeOptions.addArguments("window-size=1920,1080");
+
+        driver = new ChromeDriver(chromeOptions);
     }
 
     @Test
@@ -29,6 +34,8 @@ public class WebDriverTest {
 
         WebElement searchEnterButton = driver.findElement(By.className("ok-auth__info"));
         searchEnterButton.click();
+        new WebDriverWait(driver, Duration.ofSeconds(10).getSeconds()).
+                until(ExpectedConditions.presenceOfElementLocated(By.name("log_email")));
         WebElement enterLogin = driver.findElement(By.name("log_email"));
         enterLogin.sendKeys(login);
         WebElement enterPassword = driver.findElement(By.name("log_password"));
