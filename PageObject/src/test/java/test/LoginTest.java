@@ -1,16 +1,14 @@
 package test;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.Color;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import page.LoginPage;
+import page.RegisterPage;
 
 public class LoginTest {
     private WebDriver driver;
@@ -57,13 +55,13 @@ public class LoginTest {
 
     @Test
     public void signUpErrorTest() {
-        new LoginPage(driver)
+        new RegisterPage(driver)
                 .openTestedPage()
                 .openSignInForm()
                 .openSignUpForm();
 
         String expected = "#dd5555";
-        String color = new LoginPage(driver)
+        String color = new RegisterPage(driver)
                 .signUp();
         String actual = Color.fromString(color).asHex();
         Assert.assertEquals(actual, expected);

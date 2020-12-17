@@ -12,11 +12,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
-
-public class LoginPage {
+public class RegisterPage {
     private WebDriver driver;
     private By buttonBy = By.className("ok-auth__info");
-    private By errorSignInBlock = By.xpath("//div[@id=\"enter\"]/descendant::div[@class=\"ok-form-row -input-special data-input-check -state-error\"]");
     private By errorSignUpBlock = By.xpath("//div[@id=\"registration\"]/descendant::div[@class=\"ok-form-row -input-special data-input-check -state-error\"]");
 
     private final String URL = "https://korm.shop.by/";
@@ -45,12 +43,12 @@ public class LoginPage {
     @FindBy(xpath = "//*[@id=\"registration\"]/form/div[6]/button")
     private WebElement signUpButton;
 
-    public LoginPage(WebDriver driver) {
+    public RegisterPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 
-    public LoginPage openTestedPage() {
+    public RegisterPage openTestedPage() {
         driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
         driver.manage().deleteAllCookies();
         driver.get(URL);
@@ -59,7 +57,7 @@ public class LoginPage {
         return this;
     }
 
-    public LoginPage openSignInForm() {
+    public RegisterPage openSignInForm() {
         new FluentWait<>(driver)
                 .withTimeout(Duration.ofSeconds(15))
                 .pollingEvery(Duration.ofMillis(250))
@@ -69,6 +67,15 @@ public class LoginPage {
         return this;
     }
 
+    public RegisterPage openSignUpForm() {
+        new FluentWait<>(driver)
+                .withTimeout(Duration.ofSeconds(15))
+                .pollingEvery(Duration.ofMillis(250))
+                .withMessage("Element was not found")
+                .until(ExpectedConditions.elementToBeClickable(registerButton))
+                .click();
+        return this;
+    }
 
     public String signIn(String login, String password) {
         loginField.sendKeys(login);
@@ -79,13 +86,11 @@ public class LoginPage {
         return driver.findElement(By.className("ok-auth__info")).getText();
     }
 
-
-    public String getErrorColor(String login, String password){
-        loginField.sendKeys(login);
-        passwordField.sendKeys(password);
-        enterButton.click();
+    public String signUp() {
+        signUpButton.click();
         WebElement res = new WebDriverWait(driver, 20)
-                .until(ExpectedConditions.presenceOfElementLocated(errorSignInBlock));
+                .until(ExpectedConditions.presenceOfElementLocated(errorSignUpBlock));
         return res.getCssValue("color");
     }
+
 }
