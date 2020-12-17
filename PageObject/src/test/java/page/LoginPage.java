@@ -17,8 +17,7 @@ public class LoginPage {
     private WebDriver driver;
     private By buttonBy = By.className("ok-auth__info");
     private By errorSignInBlock = By.xpath("//div[@id=\"enter\"]/descendant::div[@class=\"ok-form-row -input-special data-input-check -state-error\"]");
-    private By errorSignUpBlock = By.xpath("//div[@id=\"registration\"]/descendant::div[@class=\"ok-form-row -input-special data-input-check -state-error\"]");
-
+    
     private final String URL = "https://korm.shop.by/";
 
     @FindBy(xpath = "//button[@data-btn-validate=\"login\"]")
@@ -30,20 +29,6 @@ public class LoginPage {
     @FindBy(xpath = "//input[@name=\"log_password\"]")
     private WebElement passwordField;
 
-    @FindBy(xpath = "//input[@name=\"reg_email\"]")
-    private WebElement loginFieldReg;
-
-    @FindBy(xpath = "//input[@name=\"reg_password\"]")
-    private WebElement passwordFieldReg;
-
-    @FindBy(xpath = "//input[@name=\"reg_password2\"]")
-    private WebElement passwordFieldReg2;
-
-    @FindBy(xpath = "//li[@href=\"#registration\"]")
-    private WebElement registerButton;
-
-    @FindBy(xpath = "//*[@id=\"registration\"]/form/div[6]/button")
-    private WebElement signUpButton;
 
     public LoginPage(WebDriver driver) {
         this.driver = driver;

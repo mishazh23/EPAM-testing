@@ -22,12 +22,6 @@ public class RegisterPage {
     @FindBy(xpath = "//button[@data-btn-validate=\"login\"]")
     private WebElement enterButton;
 
-    @FindBy(xpath = "//input[@name=\"log_email\"]")
-    private WebElement loginField;
-
-    @FindBy(xpath = "//input[@name=\"log_password\"]")
-    private WebElement passwordField;
-
     @FindBy(xpath = "//input[@name=\"reg_email\"]")
     private WebElement loginFieldReg;
 
@@ -77,14 +71,6 @@ public class RegisterPage {
         return this;
     }
 
-    public String signIn(String login, String password) {
-        loginField.sendKeys(login);
-        passwordField.sendKeys(password);
-        enterButton.click();
-        driver.navigate().refresh();
-
-        return driver.findElement(By.className("ok-auth__info")).getText();
-    }
 
     public String signUp() {
         signUpButton.click();
