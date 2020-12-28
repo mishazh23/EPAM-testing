@@ -13,8 +13,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class SpamPage extends AbstractPage {
     private final Logger logger = LogManager.getRootLogger();
     private final String URL = "https://korm.shop.by/";
-    private By spamBtn = By.linkText("АКЦИИ И СКИДКИ");
-    private By subscrBtn = By.name("subscribe");
+    private By spamButton = By.linkText("АКЦИИ И СКИДКИ");
+    private By subscriptionButton = By.name("subscribe");
 
     @FindBy(xpath = "//input[@class=\"email\"]")
     private WebElement emailField;
@@ -26,7 +26,7 @@ public class SpamPage extends AbstractPage {
 
     public SpamPage openSpamPage() {
         new WebDriverWait(driver, 15)
-                .until(ExpectedConditions.elementToBeClickable(spamBtn))
+                .until(ExpectedConditions.elementToBeClickable(spamButton))
                 .click();
         return this;
     }
@@ -34,7 +34,7 @@ public class SpamPage extends AbstractPage {
     public SpamPage goToSubscriptionPage(){
         logger.info("Click on \"Subscription\" button");
         new WebDriverWait(driver, 15)
-                .until(ExpectedConditions.elementToBeClickable(subscrBtn))
+                .until(ExpectedConditions.elementToBeClickable(subscriptionButton))
                 .click();
         return this;
     }

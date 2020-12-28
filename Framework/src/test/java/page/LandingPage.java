@@ -81,10 +81,12 @@ public class LandingPage extends AbstractPage{
         passwordField.sendKeys(user.getPassword());
         enterButton.click();
         driver.navigate().refresh();
+
         return this;
     }
 
     public String checkLogin(){
+        logger.info("Login was checked.");
         return profileButton.getText();
     }
 
@@ -118,6 +120,7 @@ public class LandingPage extends AbstractPage{
         new WebDriverWait(driver, 15)
                 .until(ExpectedConditions.elementToBeClickable(surnameField));
         String result = surnameField.getAttribute("value");
+        logger.info("Surname was gotten.");
         return result;
     }
 
@@ -128,6 +131,7 @@ public class LandingPage extends AbstractPage{
         streetField.sendKeys(street);
         houseField.sendKeys(house);
         keepAddress.click();
+        logger.info("Address was added.");
         return this;
     }
 
@@ -138,6 +142,7 @@ public class LandingPage extends AbstractPage{
                 .click();
          new WebDriverWait(driver, 20)
                 .until(ExpectedConditions.presenceOfElementLocated(selector));
+        logger.info("Addresses are counted.");
         return driver.findElements(selector)
                 .size();
     }

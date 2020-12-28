@@ -1,11 +1,9 @@
 package page;
 
-import gherkin.lexer.Ca;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -28,6 +26,7 @@ public class ItemPage extends AbstractPage {
                 .until(ExpectedConditions.elementToBeClickable(toCartButton));
         toCartButton.click();
         driver.navigate().refresh();
+        logger.info("Item is added to cart.");
         return this;
     }
 

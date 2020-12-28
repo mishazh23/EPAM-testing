@@ -34,6 +34,7 @@ public class CartPage extends AbstractPage {
         new WebDriverWait(driver,15)
                 .until(ExpectedConditions.visibilityOf(deleteButton));
                 deleteButton.click();
+        logger.info("Item was deleted from cart.");
         return this;
     }
 

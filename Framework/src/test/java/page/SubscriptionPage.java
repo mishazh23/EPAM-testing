@@ -24,6 +24,7 @@ public class SubscriptionPage extends AbstractPage {
     public String getSubscriptionMassage(){
         new WebDriverWait(driver, 15)
                 .until(ExpectedConditions.elementToBeClickable(massage));
+        logger.info("Subscription massage was gotten.");
         return massage.getText();
     }
 
